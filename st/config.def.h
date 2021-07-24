@@ -7,7 +7,7 @@
  */
 //static char *font = "VictorMono NF:pixelsize=12:antialias=true:autohint=false";
 //
-static char *font = "FiraMono Nerd Font:size=10.9:antialias=true:autohint=false";
+static char *font = "Fira Mono:size=10.9:antialias=true:autohint=false: style=regular";
 static int borderpx = 2;
 
 /*
