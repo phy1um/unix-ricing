@@ -98,30 +98,34 @@ unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+	"#1e2132",
+	"#e27878",
+	"#b4be82",
+	"#e2a478",
+	"#84a0c6",
+	"#a093c7",
+	"#89b8c2",
+	"#c6c8d1",
 
 	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+	"#6b7089",
+	"#e98989",
+	"#c0ca8e",
+	"#e9b189",
+	"#91acd1",
+	"#ada0d3",
+	"#95c4ce",
+	"#d2d4de",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
+        /* fg colour */
+        "#c6c8d1",
+        /* bg colour */
+        "#161821"
 };
 
 
