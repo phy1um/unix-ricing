@@ -753,7 +753,7 @@ drawbar(Monitor *m)
                         if ( title_len < 1000 ) {
                           strncpy(title_buffer, m->sel->name, title_len);
                           char bitbuf[12];
-                          printbinary(bitbuf, m->sel->tags, 11);
+                          printbinary(bitbuf, m->sel->tags, 8);
                           sprintf(title_buffer + title_len, " T[%s]", bitbuf);
                         }
                         else {
@@ -1872,12 +1872,12 @@ tile(Monitor *m)
 	for (i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
 		if (i < m->nmaster) {
 			h = (m->wh - my) / (MIN(n, m->nmaster) - i);
-			resize(c, m->wx + c->bw, m->wy + my, mw - (2*c->bw), h, 0);
+			resize(c, sp + m->wx + c->bw, m->wy + my, mw - (2*c->bw) - sp, h, 0);
 			if (my + HEIGHT(c) < m->wh)
-				my += HEIGHT(c) + vertpad;
+				my += HEIGHT(c);
 		} else {
 			h = (m->wh - ty) / (n - i);
-			resize(c, m->wx + mw + c->bw, m->wy + ty, m->ww - mw - (2*c->bw), h - vertpad, 0);
+			resize(c, sp + m->wx + mw + c->bw, m->wy + ty, m->ww - mw - (2*c->bw) - sp, h - vertpad, 0);
 			if (ty + HEIGHT(c) < m->wh)
 				ty += HEIGHT(c) + vertpad;
 		}
