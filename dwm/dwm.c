@@ -705,6 +705,8 @@ dirtomon(int dir)
 	return m;
 }
 
+#include "putbin.h"
+
 void
 drawbar(Monitor *m)
 {
@@ -750,7 +752,9 @@ drawbar(Monitor *m)
                         size_t title_len = strlen(m->sel->name);
                         if ( title_len < 1000 ) {
                           strncpy(title_buffer, m->sel->name, title_len);
-                          sprintf(title_buffer + title_len, " [%X]", m->sel->tags);
+                          char bitbuf[12];
+                          printbinary(bitbuf, m->sel->tags, 11);
+                          sprintf(title_buffer + title_len, " T[%s]", bitbuf);
                         }
                         else {
                           title = m->sel->name;
