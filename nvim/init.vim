@@ -28,10 +28,15 @@ syntax on
 
 set autoindent
 
+" bind - scratchpad
 nnoremap <leader>n :vert new <bar> setlocal buftype=nofile bufhidden=hide noswapfile ro<CR>
-
+" bind - jump to things
 nnoremap <leader>f :Tags<CR>
+nnoremap <leader>o :Files<CR>
 nnoremap <SPACE><SPACE> :Buffers<CR>
+" bind - open project specific config
+nnoremap <leader>z :so .nvimlocal<CR>
+" RESERVE - <leader>r for run project in .nvimlocal
 
 " Begin heavier stuff
 call plug#begin('~/.local/share/nvim/plugged')
