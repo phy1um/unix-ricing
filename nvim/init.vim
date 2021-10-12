@@ -12,6 +12,8 @@ set undofile
 set wildignorecase
 set wildmode=longest,list,full
 set wildmenu
+set number
+set hidden
 
 let mapleader = ","
 
@@ -24,18 +26,24 @@ set shiftwidth=2
 set smarttab
 syntax on
 
-" Begin heavier nvim stuff
+set autoindent
+
+nnoremap <leader>n :vert new <bar> setlocal buftype=nofile bufhidden=hide noswapfile ro<CR>
+
+" Begin heavier stuff
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mhartington/oceanic-next'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 if (has('termguicolors'))
   set termguicolors
 endif 
 
-colorscheme OceanicNext
+colorscheme iceberg
 
 " Load statusline
 lua require('phyline')
@@ -52,4 +60,5 @@ let g:nvim_tree_show_icons = { 'git': 1, 'folders': 1, 'files': 1 }
 nnoremap <leader>t :NvimTreeToggle<CR>
 
 " }}
+
 
