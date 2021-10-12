@@ -30,6 +30,9 @@ set autoindent
 
 nnoremap <leader>n :vert new <bar> setlocal buftype=nofile bufhidden=hide noswapfile ro<CR>
 
+nnoremap <leader>f :Tags<CR>
+nnoremap <SPACE><SPACE> :Buffers<CR>
+
 " Begin heavier stuff
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'kyazdani42/nvim-web-devicons'
