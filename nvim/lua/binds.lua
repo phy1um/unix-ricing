@@ -12,6 +12,6 @@ function M.cycle_colours()
   vim.cmd(":colorscheme " .. name)
 end
 
-map('n', '<leader>k', ":lua require('binds').cycle_colours()<cr>", {noremap = true})
+--map('n', '<leader>k', ":lua require('binds').cycle_colours()<cr>", {noremap = true})
 
 return M

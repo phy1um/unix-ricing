@@ -38,35 +38,43 @@ nnoremap <SPACE><SPACE> :Buffers<CR>
 nnoremap <leader>z :so .nvimlocal<CR>
 " RESERVE - <leader>r for run project in .nvimlocal
 
-" Begin heavier stuff
-call plug#begin('~/.local/share/nvim/plugged')
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'mhartington/oceanic-next'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-call plug#end()
-
 if (has('termguicolors'))
   set termguicolors
 endif 
 
+if has("nvim")
+  let $VIMPLUG = "~/.local/share/nvim/plugged"
+else
+  let $VIMPLUG = "~/.vim/plugged"
+end
+
+call plug#begin($VIMPLUG)
+" plugins for vim and nvim
+Plug 'mhartington/oceanic-next'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
+if has("nvim")
+  "Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+end
+
+call plug#end()
+
 colorscheme iceberg
 
-" Load statusline
-lua require('phyline')
-lua require('binds')
+if has("nvim")
+  " Load statusline
+  lua require('phyline')
+  lua require('binds')
+  lua require('term')
+  lua require('settings')
 
-let &undodir = $HOME . "/.local/share/nvim/undo"
+  let &undodir = $HOME . "/.local/share/nvim/undo"
 
-" nvim-tree config {{
-
-let g:nvim_tree_ignore = ['.git', 'node_modules']
-let g:nvim_tree_quit_on_open = 1
-let g:nvim_tree_git_hl = 1
-let g:nvim_tree_show_icons = { 'git': 1, 'folders': 1, 'files': 1 }
-nnoremap <leader>t :NvimTreeToggle<CR>
-
-" }}
-
+endif
 
