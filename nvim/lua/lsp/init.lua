@@ -9,6 +9,7 @@ end
 local lsp = {
   servers = {
     gopls = {}, 
+    tsserver = {},
   },
 }
 
@@ -76,7 +77,7 @@ function lsp.init()
   vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
   for k, v in pairs(lsp.servers) do
-    local opts = vim.tbl_deep_extend("force", lsp.defaults, v) 
+    local opts = vim.tbl_deep_extend("force", lsp.defaults(), v) 
     lspconfig[k].setup(opts)
   end
 end
@@ -109,16 +110,18 @@ end
 
 function lsp.get_capabilities()
   local cc = vim.lsp.protocol.make_client_capabilities()
-  return cc
+  return require"cmp_nvim_lsp".update_capabilities(cc)
 end
 
-lsp.defaults = {
-  on_attach = lsp.on_attach,
-  capabilities = lsp.get_capabilities(),
-  flags = {
-    debounce_text_changes = 150,
-  },
-}
+function lsp.defaults() 
+  return {
+    on_attach = lsp.on_attach,
+    capabilities = lsp.get_capabilities(),
+    flags = {
+      debounce_text_changes = 150,
+    },
+  }
+end
 
 --[[
 -- Use a loop to conveniently call 'setup' on multiple servers and

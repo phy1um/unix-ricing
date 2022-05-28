@@ -28,6 +28,8 @@ syntax on
 
 set autoindent
 
+set completeopt=menu,menuone,noselect
+
 " bind - scratchpad
 nnoremap <leader>n :vert new <bar> setlocal buftype=nofile bufhidden=hide noswapfile ro<CR>
 " bind - jump to things
@@ -59,6 +61,8 @@ if has("nvim")
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/popup.nvim'
+  Plug 'dcampos/nvim-snippy'
+  Plug 'dcampos/cmp-snippy'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
 end
